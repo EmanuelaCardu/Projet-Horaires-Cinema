@@ -14,7 +14,7 @@ namespace DAL_Projet_Cinema.Services
     public class MovieService : BaseService, IMovieRepository<Movie>
     {
 
-        private string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DB-Projet-Cinema;Integrated Security=True";
+        //private string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DB-Projet-Cinema;Integrated Security=True";
 
         public MovieService(IConfiguration configuration, string dbname) : base(configuration, dbname)
         {

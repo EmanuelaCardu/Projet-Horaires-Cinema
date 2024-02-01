@@ -15,7 +15,7 @@ namespace DAL_Projet_Cinema.Mappers
             {
                 Id_Movie = (int)record["Id_Movie"],
                 Title = (string)record["Title"],
-                SubTitle = (record["SubTitle"] == DBNull.Value) ? null : (string?)record["SubTitle"],
+                SubTitle = (record["SubTitle"] is DBNull) ? null : (string?)record["SubTitle"],
                 ReleaseYear = (short)record["Release"],
                 Synopsis = (string)record["Synopsis"],
                 PosterUrl = (string)record["PosterUrl"],

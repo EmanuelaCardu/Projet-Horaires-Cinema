@@ -1,3 +1,7 @@
+using Shared_Projet_Cinema.Repositories;
+using BLL = BLL_Projet_Cinema;
+using DAL =DAL_Projet_Cinema;
+
 namespace ASP_Projet_Cinema
 {
     public class Program
@@ -8,6 +12,10 @@ namespace ASP_Projet_Cinema
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<IMovieRepository<BLL.Entities.Movie>, BLL.Services.MovieService>();
+            builder.Services.AddScoped<IMovieRepository<DAL.Entities.Movie>, DAL.Services.MovieService>();
+
 
             var app = builder.Build();
 
