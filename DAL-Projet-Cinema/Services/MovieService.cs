@@ -16,7 +16,7 @@ namespace DAL_Projet_Cinema.Services
 
         //private string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DB-Projet-Cinema;Integrated Security=True";
 
-        public MovieService(IConfiguration configuration, string dbname) : base(configuration, dbname)
+        public MovieService(IConfiguration configuration) : base(configuration, "DB-Projet-Cinema")
         {
         }
 
