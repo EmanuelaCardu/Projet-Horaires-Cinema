@@ -8,6 +8,7 @@ namespace BLL_Projet_Cinema.Mappers
 {
     internal static class Mapper
     {
+        #region Movie
         public static BLL.Movie ToBLL(this DAL.Movie entity)
         {
             if (entity == null) return null;
@@ -20,5 +21,21 @@ namespace BLL_Projet_Cinema.Mappers
                 entity.PosterUrl,
                 entity.Duration);
         }
+
+        public static DAL.Movie ToDAL(this BLL.Movie entity)
+        {
+            if (entity is null) return null;
+            return new DAL.Movie()
+            {
+                Id_Movie = entity.Id_Movie,
+                Title = entity.Title,
+                SubTitle = entity.SubTitle,
+                ReleaseYear = entity.ReleaseYear,
+                Synopsis = entity.Synopsis,
+                PosterUrl = entity.PosterUrl,
+                Duration = entity.Duration
+            };
+        } 
+        #endregion
     }
 }

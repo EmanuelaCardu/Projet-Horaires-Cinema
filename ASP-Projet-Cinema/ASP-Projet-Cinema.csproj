@@ -7,4 +7,10 @@
     <RootNamespace>ASP_Projet_Cinema</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BLL-Projet-Cinema\BLL-Projet-Cinema.csproj" />
+    <ProjectReference Include="..\DAL-Projet-Cinema\DAL-Projet-Cinema.csproj" />
+    <ProjectReference Include="..\Shared-Projet-Cinema\Shared-Projet-Cinema.csproj" />
+  </ItemGroup>
+
 </Project>
