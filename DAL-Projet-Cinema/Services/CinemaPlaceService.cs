@@ -1,25 +1,20 @@
 ﻿using DAL_Projet_Cinema.Entities;
-using DAL_Projet_Cinema.Mappers;
 using Microsoft.Extensions.Configuration;
 using Shared_Projet_Cinema.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
+using System.Data;
 using System.Text;
+using DAL_Projet_Cinema.Mappers;
 
 namespace DAL_Projet_Cinema.Services
 {
-    public class MovieService : BaseService, IMovieRepository<Movie>
+    public class CinemaPlaceService : BaseService, ICinemaPlaceRepository<CinemaPlace>
     {
-
-        //private string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DB-Projet-Cinema;Integrated Security=True";
-
-        public MovieService(IConfiguration configuration) : base(configuration, "DB-Projet-Cinema")
+        public CinemaPlaceService(IConfiguration configuration, string dbname) : base(configuration, "DB-Projet-Cinema")
         {
         }
-
 
         public void Delete(int id)
         {
@@ -27,7 +22,7 @@ namespace DAL_Projet_Cinema.Services
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = "SP_Movie_Delete";
+                    command.CommandText = "SP_CinemaPlace_Delete";
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("id", id);
                     connection.Open();
@@ -37,86 +32,79 @@ namespace DAL_Projet_Cinema.Services
             }
         }
 
-        public IEnumerable<Movie> Get()
+        public IEnumerable<CinemaPlace> Get()
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = "SP_Movie_GetAll.sql";
+                    command.CommandText = "SP_CinemaPlace_GetAll.sql";
                     command.CommandType = CommandType.StoredProcedure;
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            yield return reader.ToMovie();
+                            yield return reader.ToCinemaPlace();
                         }
                     }
                 }
             }
-                
         }
 
-        public Movie Get(int id)
+        public CinemaPlace Get(int id)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = "SP_Movie_GetById";
+                    command.CommandText = "SP_CinemaPlace_GetById";
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("id", id);
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        if (reader.Read()) return reader.ToMovie();
+                        if (reader.Read()) return reader.ToCinemaPlace();
                         throw new ArgumentException(nameof(id), $"L'identifiant {id} n'existe pas dans la base de données.");
                     }
                 }
             }
         }
 
-        public int Insert(Movie data)
+        public int Insert(CinemaPlace data)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = "SP_Movie_Insert";
+                    command.CommandText = "SP_CinemaPlace_insert";
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("Title", data.Title);
-                    command.Parameters.AddWithValue("SubTitle", data.SubTitle ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("ReleaseYear", data.ReleaseYear);
-                    command.Parameters.AddWithValue("Sinopsys", data.Synopsis);
-                    command.Parameters.AddWithValue("PosterUrl", data.PosterUrl);
-                    command.Parameters.AddWithValue("Duration", data.Duration);
+                    command.Parameters.AddWithValue("Name", data.Name);
+                    command.Parameters.AddWithValue("City", data.City);
+                    command.Parameters.AddWithValue("Street", data.Street);
+                    command.Parameters.AddWithValue("Number", data.Number);
                     connection.Open();
                     return (int)command.ExecuteScalar();
                 }
             }
         }
 
-        public void Update(Movie data)
+        public void Update(CinemaPlace data)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = "SP_Movie_Update.sql";
+                    command.CommandText = "SP_CinemaPlace_Update.sql";
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("Title", data.Title);
-                    command.Parameters.AddWithValue("SubTitle", data.SubTitle ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("ReleaseYear", data.ReleaseYear);
-                    command.Parameters.AddWithValue("Sinopsys", data.Synopsis);
-                    command.Parameters.AddWithValue("PosterUrl", data.PosterUrl);
-                    command.Parameters.AddWithValue("Duration", data.Duration);
+                    command.Parameters.AddWithValue("Name", data.Name);
+                    command.Parameters.AddWithValue("City", data.City);
+                    command.Parameters.AddWithValue("Street", data.Street);
+                    command.Parameters.AddWithValue("Number", data.Number);
 
                 }
 
             }
-
-
         }
     }
 }

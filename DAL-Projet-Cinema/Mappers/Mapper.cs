@@ -22,5 +22,18 @@ namespace DAL_Projet_Cinema.Mappers
                 Duration = (int)record["Duration"]
             };
          }
+
+        public static CinemaPlace ToCinemaPlace(this IDataRecord record)
+        {
+            if (record is null) return null;
+            return new CinemaPlace()
+            {
+                Id_CinemaPlace = (int)record["Id_CinemaPlace"],
+                Name = (string)record["Name"],
+                City = (string)record["City"],
+                Street = (string)record["Street"],
+                Number = (string)record["Number"]
+            };
+        }
     }
 }
