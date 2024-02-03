@@ -25,6 +25,6 @@ namespace BLL_Projet_Cinema.Entities
             Duration = duration;
         }
 
-        
+       
     }
 }

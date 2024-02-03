@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared_Projet_Cinema.Repositories;
 using BLL_Projet_Cinema.Entities;
+using ASP_Projet_Cinema.Models;
+using ASP_Projet_Cinema.Handlers;
+
 
 
 namespace ASP_Projet_Cinema.Controllers
