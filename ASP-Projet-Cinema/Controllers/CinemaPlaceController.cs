@@ -1,4 +1,6 @@
-﻿using BLL_Projet_Cinema.Entities;
+﻿using ASP_Projet_Cinema.Handlers;
+using ASP_Projet_Cinema.Models;
+using BLL_Projet_Cinema.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared_Projet_Cinema.Repositories;
@@ -15,7 +17,8 @@ namespace ASP_Projet_Cinema.Controllers
         // GET: CinemaPlaceController
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<CinemaPlaceListItemViewModel> model =_CinemaPlaceRepository.Get().Select(d => d.ToListItem());
+            return View(model);
         }
 
         // GET: CinemaPlaceController/Details/5

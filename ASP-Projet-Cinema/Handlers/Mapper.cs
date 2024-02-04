@@ -1,5 +1,6 @@
 ﻿using ASP_Projet_Cinema.Models;
 using BLL_Projet_Cinema.Entities;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace ASP_Projet_Cinema.Handlers
 {
@@ -17,6 +18,19 @@ namespace ASP_Projet_Cinema.Handlers
                 Synopsis = entity.Synopsis,
                 PosterUrl = entity.PosterUrl,
                 Duration = entity.Duration
+            };
+        }
+
+        public static CinemaPlaceListItemViewModel ToListItem( this CinemaPlace entity )
+        {
+            if (entity is null) return null;
+            return new CinemaPlaceListItemViewModel()
+            {
+                Id_CinemaPlace = entity.Id_CinemaPlace,
+                Name = entity.Name,
+                City = entity.City,
+                Street = entity.Street,
+                Number = entity.Number,
             };
         }
     }
