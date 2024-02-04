@@ -25,6 +25,11 @@ namespace BLL_Projet_Cinema.Entities
             Duration = duration;
         }
 
-       
+        //public void UpdateSynopsis (string newSynopsis)
+        //{
+        //    if(newSynopsis < 50 || newSynopsis > 500) throw new ArgumentOutOfRangeException(nameof(newSynopsis), "Le résumé doit rester compris" +
+        //        "entre 0 et 500 charactères");
+        //    Synopsis = newSynopsis;
+        //}
     }
 }

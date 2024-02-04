@@ -24,7 +24,8 @@ namespace ASP_Projet_Cinema.Controllers
         // GET: CinemaPlaceController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            CinemaPlaceDetailsViewModel model = _CinemaPlaceRepository.Get(id).ToDetails();
+            return View(model); 
         }
 
         // GET: CinemaPlaceController/Create

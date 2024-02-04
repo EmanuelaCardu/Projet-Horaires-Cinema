@@ -33,5 +33,19 @@ namespace ASP_Projet_Cinema.Handlers
                 Number = entity.Number,
             };
         }
+
+        public static CinemaPlaceDetailsViewModel ToDetails( this CinemaPlace entity )
+        {
+            if (entity is null) return null;
+            return new CinemaPlaceDetailsViewModel()
+            {
+                Id_CinemaPlace = entity.Id_CinemaPlace,
+                Name = entity.Name,
+                City = entity.City,
+                Street = entity.Street,
+                Number = entity.Number
+
+            };
+        }
     }
 }
