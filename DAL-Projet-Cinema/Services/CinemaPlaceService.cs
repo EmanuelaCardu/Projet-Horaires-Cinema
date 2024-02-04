@@ -77,7 +77,7 @@ namespace DAL_Projet_Cinema.Services
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = "SP_CinemaPlace_insert";
+                    command.CommandText = "SP_CinemaPlace_Insert";
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("Name", data.Name);
                     command.Parameters.AddWithValue("City", data.City);
