@@ -6,9 +6,9 @@ namespace BLL_Projet_Cinema.Entities
 {
     public class CinemaPlace
     {
-        public int Id_CinemaPlace { get; set; }
+        public int Id_CinemaPlace { get; private set; }
         public string Name { get; set; }
-        public string City { get; set; }
+        public string City { get;  private set; }
         public string Street { get; set; }
         public string Number { get; set; }
 

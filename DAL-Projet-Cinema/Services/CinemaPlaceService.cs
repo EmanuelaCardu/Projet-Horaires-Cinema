@@ -12,7 +12,7 @@ namespace DAL_Projet_Cinema.Services
 {
     public class CinemaPlaceService : BaseService, ICinemaPlaceRepository<CinemaPlace>
     {
-        public CinemaPlaceService(IConfiguration configuration, string dbname) : base(configuration, "DB-Projet-Cinema")
+        public CinemaPlaceService(IConfiguration configuration) : base(configuration, "DB-Projet-Cinema")
         {
         }
 
