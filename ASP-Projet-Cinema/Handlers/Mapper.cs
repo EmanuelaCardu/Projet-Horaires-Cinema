@@ -47,5 +47,19 @@ namespace ASP_Projet_Cinema.Handlers
 
             };
         }
+
+        public static Movie ToBLL( this MovieCreateForm entity )
+        {
+            if (entity is null) return null;
+            return new Movie(
+                0,
+                entity.Title,
+                entity.SubTitle,
+                entity.ReleaseYear,
+                entity.Synopsis,
+                entity.PosterUrl,
+                entity.Duration
+                );
+        }
     }
 }

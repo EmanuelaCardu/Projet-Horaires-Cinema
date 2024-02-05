@@ -24,7 +24,7 @@ namespace DAL_Projet_Cinema.Services
                 {
                     command.CommandText = "SP_CinemaPlace_Delete";
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("id", id);
+                    command.Parameters.AddWithValue("id_cinemaPlace", id);
                     connection.Open();
                     if (command.ExecuteNonQuery() <= 0)
                         throw new ArgumentException(nameof(id), $"L'identifiant {id} n'est pas das la base de données");

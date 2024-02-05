@@ -29,7 +29,7 @@ namespace DAL_Projet_Cinema.Services
                 {
                     command.CommandText = "SP_Movie_Delete";
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("id", id);
+                    command.Parameters.AddWithValue("id_Movie", id);
                     connection.Open();
                     if (command.ExecuteNonQuery() <= 0)
                         throw new ArgumentException(nameof(id), $"L'identifiant {id} n'est pas das la base de données");
@@ -66,7 +66,7 @@ namespace DAL_Projet_Cinema.Services
                 {
                     command.CommandText = "SP_Movie_GetById";
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("id", id);
+                    command.Parameters.AddWithValue("id_Movie", id);
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -88,7 +88,7 @@ namespace DAL_Projet_Cinema.Services
                     command.Parameters.AddWithValue("Title", data.Title);
                     command.Parameters.AddWithValue("SubTitle", data.SubTitle ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("ReleaseYear", data.ReleaseYear);
-                    command.Parameters.AddWithValue("Sinopsys", data.Synopsis);
+                    command.Parameters.AddWithValue("Synopsis", data.Synopsis);
                     command.Parameters.AddWithValue("PosterUrl", data.PosterUrl);
                     command.Parameters.AddWithValue("Duration", data.Duration);
                     connection.Open();

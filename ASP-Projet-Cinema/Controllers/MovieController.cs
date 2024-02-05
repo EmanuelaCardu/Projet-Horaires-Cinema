@@ -40,11 +40,14 @@ namespace ASP_Projet_Cinema.Controllers
         // POST: MovieController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(MovieCreateForm form)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (form == null) ModelState.AddModelError(nameof(form), "Pas de donnée reçue");
+                if (!ModelState.IsValid) throw new Exception();
+                int id = _movieRepository.Insert(form.ToBLL());
+                return RedirectToAction(nameof(Details), new { id });
             }
             catch
             {
