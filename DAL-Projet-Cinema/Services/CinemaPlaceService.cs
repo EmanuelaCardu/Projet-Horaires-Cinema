@@ -38,7 +38,7 @@ namespace DAL_Projet_Cinema.Services
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = "SP_CinemaPlace_GetAll.sql";
+                    command.CommandText = "SP_CinemaPlace_GetAll";
                     command.CommandType = CommandType.StoredProcedure;
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -95,7 +95,7 @@ namespace DAL_Projet_Cinema.Services
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = "SP_CinemaPlace_Update.sql";
+                    command.CommandText = "SP_CinemaPlace_Update";
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("Name", data.Name);
                     command.Parameters.AddWithValue("City", data.City);
