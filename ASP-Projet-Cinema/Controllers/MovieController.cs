@@ -27,6 +27,7 @@ namespace ASP_Projet_Cinema.Controllers
         // GET: MovieController/Details/5
         public ActionResult Details(int id)
         {
+
             return View();
         }
 
