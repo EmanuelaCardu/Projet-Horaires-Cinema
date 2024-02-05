@@ -10,6 +10,7 @@ namespace BLL_Projet_Cinema.Entities
         public string Title { get; private set; }
         public string? SubTitle { get; set; }
         public short ReleaseYear { get;  private set; }
+       
         public string Synopsis { get; set; }
         public string PosterUrl { get; set; }
         public int Duration { get; private set; }

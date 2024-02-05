@@ -18,18 +18,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.SubTitle)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReleaseYear)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Synopsis)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PosterUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Duration)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -43,21 +31,9 @@
                 @Html.DisplayFor(modelItem => item.SubTitle)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReleaseYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Synopsis)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PosterUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duration)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id_Movie }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id_Movie }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id_Movie })
+                @Html.ActionLink("Edit", "Edit", new {id = item.Id_Movie }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id_Movie }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id_Movie })
             </td>
         </tr>
 }

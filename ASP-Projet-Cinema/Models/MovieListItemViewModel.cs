@@ -12,17 +12,17 @@ namespace ASP_Projet_Cinema.Models
         [DisplayName("Soutitre")]
 
         public string? SubTitle { get; set; }
-        [DisplayName("Année de sortie")]
+        //[DisplayName("Année de sortie")]
 
-        public short ReleaseYear { get; set; }
-        [DisplayName("Resumé")]
+        //public short ReleaseYear { get; set; }
+        //[DisplayName("Resumé")]
 
-        public string Synopsis { get; set; }
-        [DisplayName("Poster")]
+        //public string Synopsis { get; set; }
+        //[DisplayName("Poster")]
 
-        public string PosterUrl { get; set; }
-        [DisplayName("Durée")]
+        //public string PosterUrl { get; set; }
+        //[DisplayName("Durée")]
 
-        public int Duration { get; set; }
+        //public int Duration { get; set; }
     }
 }

@@ -14,10 +14,10 @@ namespace ASP_Projet_Cinema.Handlers
                 Id_Movie = entity.Id_Movie,
                 Title = entity.Title,
                 SubTitle = entity.SubTitle,
-                ReleaseYear = entity.ReleaseYear,
-                Synopsis = entity.Synopsis,
-                PosterUrl = entity.PosterUrl,
-                Duration = entity.Duration
+                //ReleaseYear = entity.ReleaseYear,
+                //Synopsis = entity.Synopsis,
+                //PosterUrl = entity.PosterUrl,
+                //Duration = entity.Duration
             };
         }
 
