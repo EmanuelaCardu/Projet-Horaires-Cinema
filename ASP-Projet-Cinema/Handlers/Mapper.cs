@@ -1,4 +1,5 @@
-﻿using ASP_Projet_Cinema.Models;
+﻿using ASP_Projet_Cinema.Controllers;
+using ASP_Projet_Cinema.Models;
 using BLL_Projet_Cinema.Entities;
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -60,6 +61,23 @@ namespace ASP_Projet_Cinema.Handlers
                 entity.PosterUrl,
                 entity.Duration
                 );
+        }
+
+        public static MovieDetailsViewModel ToDetails (this Movie entity)
+        {
+            if (entity is null) return null;
+            return new MovieDetailsViewModel()
+            {
+                Id_Movie = entity.Id_Movie,
+                Title = entity.Title,
+                SubTitle = entity.SubTitle,
+                ReleaseYear = entity.ReleaseYear,
+                Synopsis = entity.Synopsis,
+                PosterUrl = entity.PosterUrl,
+                Duration = entity.Duration
+
+            };
+
         }
     }
 }

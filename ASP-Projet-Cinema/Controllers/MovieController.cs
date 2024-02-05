@@ -28,7 +28,8 @@ namespace ASP_Projet_Cinema.Controllers
         public ActionResult Details(int id)
         {
 
-            return View();
+            MovieDetailsViewModel model = _movieRepository.Get(id).ToDetails();
+            return View(model);
         }
 
         // GET: MovieController/Create
