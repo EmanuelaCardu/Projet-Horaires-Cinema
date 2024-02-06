@@ -86,6 +86,7 @@ namespace ASP_Projet_Cinema.Handlers
             if (entity is null) return null;
             return new MovieEditForm()
             {
+                Id_Movie = entity.Id_Movie,
                 Title = entity.Title,
                 SubTitle = entity.SubTitle,
                 ReleaseYear = entity.ReleaseYear,
@@ -99,7 +100,7 @@ namespace ASP_Projet_Cinema.Handlers
         {
             if (entity is null) return null;
             return new Movie(
-                 0,
+                0,
                 entity.Title,
                 entity.SubTitle,
                 entity.ReleaseYear,
@@ -107,6 +108,34 @@ namespace ASP_Projet_Cinema.Handlers
                 entity.PosterUrl,
                 entity.Duration
                 );
+        }
+
+        public static CinemaPlaceDeleteViewModel ToDelete(this CinemaPlace entity)
+        {
+            if (entity is null) return null;
+            return new CinemaPlaceDeleteViewModel()
+            {
+                Id_CinemaPlace = entity.Id_CinemaPlace,
+                Name = entity.Name,
+                City = entity.City,
+                Street = entity.Street,
+                Number = entity.Number,
+            };
+        }
+
+        public static MovieDeleteViewModel ToDelete( this Movie entity)
+        {
+            if (entity is null) return null;
+            return new MovieDeleteViewModel()
+            {
+                Title = entity.Title,
+                SubTitle = entity.SubTitle,
+                ReleaseYear = entity.ReleaseYear,
+                Synopsis = entity.Synopsis,
+                PosterUrl = entity.PosterUrl,
+                Duration = entity.Duration
+
+            };
         }
     }
 }

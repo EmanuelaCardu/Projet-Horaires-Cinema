@@ -57,26 +57,31 @@ namespace ASP_Projet_Cinema.Controllers
         // GET: MovieController/Edit/5
         public ActionResult Edit(int id)
         {
-            MovieEditForm model = _movieRepository.Get(id).ToEdit();
-            if (model is null)
+            try
             {
-                return RedirectToAction("Index");
+                MovieEditForm model = _movieRepository.Get(id).ToEdit();
+                if (model is null) throw new ArgumentOutOfRangeException(nameof(id), $"Pas de film avec l'identifiant {id}");
+
+                return View(model);
             }
-            return View(model);
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: MovieController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id_Movie, MovieEditForm form)
+        public ActionResult Edit(int id, MovieEditForm form)
         {
             try
             {
-                if (!ModelState.IsValid) return View(form);
+                if (form is null) ModelState.AddModelError(nameof(form), "Pas de données reçues");
+                if (!ModelState.IsValid) throw new Exception();
                _movieRepository.Update(form.ToBLL());
 
-
-                return RedirectToAction(nameof(Details), new { id_Movie });
+                return RedirectToAction(nameof(Details), new { id });
             }
             catch
             {
@@ -87,21 +92,31 @@ namespace ASP_Projet_Cinema.Controllers
         // GET: MovieController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+                MovieDeleteViewModel model = _movieRepository.Get(id).ToDelete();
+                if (model == null) throw new InvalidDataException();
+                return View(model);
+            }
+            catch
+            {
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         // POST: MovieController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, MovieDeleteViewModel model)
         {
             try
             {
+                _movieRepository.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
     }

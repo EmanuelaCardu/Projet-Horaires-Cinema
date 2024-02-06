@@ -5,6 +5,8 @@ namespace ASP_Projet_Cinema.Models
 {
     public class MovieEditForm
     {
+        [ScaffoldColumn(false)]
+        public int Id_Movie { get; set; }
         [DisplayName("Titre")]
         [Required(ErrorMessage = "Le titre est obligatoire.")]
         [MaxLength(64, ErrorMessage = "Le titre ne peut dépasser 64 caractères.")]

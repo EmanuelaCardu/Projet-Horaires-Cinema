@@ -37,7 +37,7 @@ namespace ASP_Projet_Cinema.Controllers
         // POST: CinemaPlaceController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(CinemaPlaceCreateForm form)
         {
             try
             {
@@ -73,21 +73,31 @@ namespace ASP_Projet_Cinema.Controllers
         // GET: CinemaPlaceController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+                CinemaPlaceDeleteViewModel model = _CinemaPlaceRepository.Get(id).ToDelete();
+                if (model == null) throw new InvalidDataException();
+                return View(model);
+            }
+            catch 
+            { return RedirectToAction(nameof(Index));
+            }
+            
         }
 
         // POST: CinemaPlaceController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, CinemaPlaceDeleteViewModel model)
         {
             try
             {
+                _CinemaPlaceRepository.Delete(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(model);
             }
         }
     }
