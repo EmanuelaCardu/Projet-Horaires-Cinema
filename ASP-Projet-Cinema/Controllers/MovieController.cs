@@ -1,10 +1,8 @@
-﻿
-using Microsoft.AspNetCore.Http;
+﻿using ASP_Projet_Cinema.Handlers;
+using ASP_Projet_Cinema.Models;
+using BLL_Projet_Cinema.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Shared_Projet_Cinema.Repositories;
-using BLL_Projet_Cinema.Entities;
-using ASP_Projet_Cinema.Models;
-using ASP_Projet_Cinema.Handlers;
 
 
 
@@ -12,7 +10,7 @@ namespace ASP_Projet_Cinema.Controllers
 {
     public class MovieController : Controller
     {
-        private readonly IMovieRepository<Movie> _movieRepository; 
+        private readonly IMovieRepository<Movie> _movieRepository;
         public MovieController(IMovieRepository<Movie> movieRepository)
         {
             _movieRepository = movieRepository;
@@ -59,17 +57,26 @@ namespace ASP_Projet_Cinema.Controllers
         // GET: MovieController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            MovieEditForm model = _movieRepository.Get(id).ToEdit();
+            if (model is null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
 
         // POST: MovieController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, MovieEditForm form)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (!ModelState.IsValid) return View(form);
+                _movieRepository.Update(form.ToBLL());
+
+
+                return RedirectToAction(nameof(Details), new { id = id });
             }
             catch
             {

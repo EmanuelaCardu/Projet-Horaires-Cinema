@@ -105,12 +105,16 @@ namespace DAL_Projet_Cinema.Services
                 {
                     command.CommandText = "SP_Movie_Update";
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("Id_movie", data.Id_Movie);
                     command.Parameters.AddWithValue("Title", data.Title);
                     command.Parameters.AddWithValue("SubTitle", data.SubTitle ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("ReleaseYear", data.ReleaseYear);
-                    command.Parameters.AddWithValue("Sinopsys", data.Synopsis);
+                    command.Parameters.AddWithValue("Synopsis", data.Synopsis);
                     command.Parameters.AddWithValue("PosterUrl", data.PosterUrl);
                     command.Parameters.AddWithValue("Duration", data.Duration);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
 
                 }
 
