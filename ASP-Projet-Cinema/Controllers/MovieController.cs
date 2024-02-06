@@ -68,19 +68,19 @@ namespace ASP_Projet_Cinema.Controllers
         // POST: MovieController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, MovieEditForm form)
+        public ActionResult Edit(int id_Movie, MovieEditForm form)
         {
             try
             {
                 if (!ModelState.IsValid) return View(form);
-                _movieRepository.Update(form.ToBLL());
+               _movieRepository.Update(form.ToBLL());
 
 
-                return RedirectToAction(nameof(Details), new { id = id });
+                return RedirectToAction(nameof(Details), new { id_Movie });
             }
             catch
             {
-                return View();
+                return View(form);
             }
         }
 

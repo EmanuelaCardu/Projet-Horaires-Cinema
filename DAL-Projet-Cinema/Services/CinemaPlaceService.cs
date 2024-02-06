@@ -101,7 +101,9 @@ namespace DAL_Projet_Cinema.Services
                     command.Parameters.AddWithValue("City", data.City);
                     command.Parameters.AddWithValue("Street", data.Street);
                     command.Parameters.AddWithValue("Number", data.Number);
-
+                    connection.Open();
+                    if (command.ExecuteNonQuery() <=0)
+                        throw new ArgumentException(nameof(data.Id_CinemaPlace), $"L'identifiant {data.Id_CinemaPlace} n'est pas dans la bd");
                 }
 
             }

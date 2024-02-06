@@ -105,7 +105,7 @@ namespace DAL_Projet_Cinema.Services
                 {
                     command.CommandText = "SP_Movie_Update";
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("Id_movie", data.Id_Movie);
+                    command.Parameters.AddWithValue("Id_Movie", data.Id_Movie);
                     command.Parameters.AddWithValue("Title", data.Title);
                     command.Parameters.AddWithValue("SubTitle", data.SubTitle ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("ReleaseYear", data.ReleaseYear);
@@ -113,7 +113,9 @@ namespace DAL_Projet_Cinema.Services
                     command.Parameters.AddWithValue("PosterUrl", data.PosterUrl);
                     command.Parameters.AddWithValue("Duration", data.Duration);
                     connection.Open();
-                    command.ExecuteNonQuery();
+                    if (command.ExecuteNonQuery() <= 0)
+                        throw new ArgumentException(nameof(data.Id_Movie), $"L'identifiant {data.Id_Movie} n'est" +
+                            $" pas dans la base de donnée");
 
 
                 }
