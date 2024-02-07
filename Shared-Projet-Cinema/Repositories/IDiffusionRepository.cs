@@ -6,5 +6,6 @@ namespace Shared_Projet_Cinema.Repositories
 {
     public interface IDiffusionRepository<Entity>: ICRUDRepository<Entity, int> where Entity : class
     {
+        public IEnumerable<Entity> GetByCinemaPlace(int id);
     }
 }
