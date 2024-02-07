@@ -36,6 +36,21 @@ namespace ASP_Projet_Cinema.Handlers
             };
         }
 
+        public static DiffusionListItemViewModel ToListItem (this Diffusion entity)
+        {
+            if (entity is null) return null;
+            return new DiffusionListItemViewModel()
+            {
+                Id_Diffusion = entity.Id_Diffusion,
+                DiffusionDate = entity.DiffusionDate,
+                DiffusionTime = entity.DiffusionTime,
+                AudioLang = entity.AudioLang,
+                SubTitleLang = entity.SubTitleLang,
+                Id_CinemaRoom = entity.Id_CinemaRoom,
+                Id_Movie = entity.Id_Movie,
+            };
+        }
+
         public static CinemaPlaceDetailsViewModel ToDetails( this CinemaPlace entity )
         {
             if (entity is null) return null;

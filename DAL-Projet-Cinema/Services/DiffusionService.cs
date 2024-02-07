@@ -99,6 +99,7 @@ namespace DAL_Projet_Cinema.Services
                 {
                     command.CommandText = "SP_Diffusion_Update";
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("Id_Diffusion", data.Id_Diffusion);
                     command.Parameters.AddWithValue("DiffusionDate", data.DiffusionDate);
                     command.Parameters.AddWithValue("DiffusionTime", data.DiffusionTime);
                     command.Parameters.AddWithValue("AudioLang", data.AudioLang);

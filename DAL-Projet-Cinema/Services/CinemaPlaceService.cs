@@ -97,6 +97,7 @@ namespace DAL_Projet_Cinema.Services
                 {
                     command.CommandText = "SP_CinemaPlace_Update";
                     command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("Id_CinemaPlace", data.Id_CinemaPlace);
                     command.Parameters.AddWithValue("Name", data.Name);
                     command.Parameters.AddWithValue("City", data.City);
                     command.Parameters.AddWithValue("Street", data.Street);
