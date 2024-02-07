@@ -34,7 +34,7 @@ namespace ASP_Projet_Cinema.Models
         public string PosterUrl { get; set; }
         [DisplayName("Durée")]
         [Required(ErrorMessage = "La durée est obligatoire.")]
-        [Range(20,500,ErrorMessage = "La durée doit être compise entre 20 minutes et 500 minutes" )]
+        [Range(20,500,ErrorMessage = "La durée doit être comprise entre 20 minutes et 500 minutes" )]
         public int Duration { get; set; }
     }
 }

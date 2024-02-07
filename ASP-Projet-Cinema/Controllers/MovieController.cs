@@ -43,7 +43,7 @@ namespace ASP_Projet_Cinema.Controllers
         {
             try
             {
-                if (form == null) ModelState.AddModelError(nameof(form), "Pas de donnée reçue");
+                if (form == null) ModelState.AddModelError(nameof(form), "Pas de données reçue");
                 if (!ModelState.IsValid) throw new Exception();
                 int id = _movieRepository.Insert(form.ToBLL());
                 return RedirectToAction(nameof(Details), new { id });

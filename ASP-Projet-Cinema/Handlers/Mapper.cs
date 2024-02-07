@@ -64,6 +64,18 @@ namespace ASP_Projet_Cinema.Handlers
                 );
         }
 
+        public static CinemaPlace ToBLL( this CinemaPlaceCreateForm entity)
+        {
+            if (entity is null) return null;
+            return new CinemaPlace(
+                0,
+                entity.Name,
+                entity.City,
+                entity.Street,
+                entity.Number
+                );
+        }
+
         public static MovieDetailsViewModel ToDetails (this Movie entity)
         {
             if (entity is null) return null;
