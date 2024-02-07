@@ -8,7 +8,7 @@ namespace DAL_Projet_Cinema.Entities
     {
         public int Id_Diffusion { get; set; }
         public DateTime DiffusionDate { get; set; }
-        public DateTime DiffusionTime { get; set; }
+        public TimeSpan DiffusionTime { get; set; }
         public string AudioLang { get; set;}
         public string? SubTitleLang {  get; set; }
         public int Id_CinemaRoom { get; set; }

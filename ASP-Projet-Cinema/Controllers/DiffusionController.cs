@@ -1,4 +1,5 @@
-﻿using ASP_Projet_Cinema.Models;
+﻿using ASP_Projet_Cinema.Handlers;
+using ASP_Projet_Cinema.Models;
 using BLL_Projet_Cinema.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,8 @@ namespace ASP_Projet_Cinema.Controllers
         public ActionResult Index()
         {
             IEnumerable<DiffusionListItemViewModel> model = _diffusionRepository.Get()
-                                                                        .Select(d => d.ToListItem());
+                                                              .Select(d => d.ToListItem());
+            return View(model);
         }
 
         // GET: DiffusionController/Details/5
