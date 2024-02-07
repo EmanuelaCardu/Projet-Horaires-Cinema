@@ -65,5 +65,34 @@ namespace BLL_Projet_Cinema.Mappers
             };
         } 
         #endregion
+
+        public static BLL.Diffusion ToBLL (this DAL.Diffusion entity)
+        {
+            if (entity is null) return null;
+            return new BLL.Diffusion(
+                entity.Id_Diffusion,
+                entity.DiffusionDate,
+                entity.DiffusionTime,
+                entity.AudioLang,
+                entity.SubTitleLang,
+                entity.Id_CinemaRoom,
+                entity.Id_Movie
+                );
+        }
+
+        public static DAL.Diffusion ToDAL (this BLL.Diffusion entity)
+        {
+            if (entity is null) return null;
+            return new DAL.Diffusion()
+            {
+                Id_Diffusion = entity.Id_Diffusion,
+                DiffusionDate = entity.DiffusionDate,
+                DiffusionTime = entity.DiffusionTime,
+                AudioLang = entity.AudioLang,
+                SubTitleLang = entity.SubTitleLang,
+                Id_CinemaRoom = entity.Id_CinemaRoom,
+                Id_Movie = entity.Id_Movie
+            };
+        }
     }
 }

@@ -15,7 +15,8 @@ namespace BLL_Projet_Cinema.Entities
         public string PosterUrl { get; set; }
         public int Duration { get; private set; }
 
-        public Movie(int id_Movie, string title, string? subTitle, short releaseYear, string synopsis, string posterUrl, int duration)
+        public Movie(int id_Movie, string title, string? subTitle, short releaseYear, 
+            string synopsis, string posterUrl, int duration)
         {
             Id_Movie = id_Movie;
             Title = title;

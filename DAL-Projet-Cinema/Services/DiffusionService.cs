@@ -24,7 +24,7 @@ namespace DAL_Projet_Cinema.Services
                 {
                     command.CommandText = "SP_Diffusion_Delete";
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("id_Diffusion", id);
+                    command.Parameters.AddWithValue("Id_Diffusion", id);
                     connection.Open();
                     if (command.ExecuteNonQuery() <= 0)
                         throw new ArgumentException(nameof(id), $"L'identifiant {id} n'est pas das la base de données");
@@ -60,7 +60,7 @@ namespace DAL_Projet_Cinema.Services
                 {
                     command.CommandText = "SP_Diffusion_GetById";
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("id_Movie", id);
+                    command.Parameters.AddWithValue("Id_Diffusion", id);
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -79,7 +79,7 @@ namespace DAL_Projet_Cinema.Services
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "SP_Diffusion_GetByCinemaPlace";
-                    command.Parameters.AddWithValue("id_cinemaPlace", id);
+                    command.Parameters.AddWithValue("Id_CinemaPlace", id);
 
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
