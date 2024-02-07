@@ -1,10 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ASP_Projet_Cinema.Models
 {
     public class MovieEditForm
     {
+        [HiddenInput]
+        [Required]
         [ScaffoldColumn(false)]
         public int Id_Movie { get; set; }
         [DisplayName("Titre")]

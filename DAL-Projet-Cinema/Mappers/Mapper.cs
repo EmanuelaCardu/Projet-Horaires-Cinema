@@ -35,5 +35,20 @@ namespace DAL_Projet_Cinema.Mappers
                 Number = (string)record["Number"]
             };
         }
+
+        public static Diffusion ToDiffusion(this IDataRecord record)
+        {
+            if (record is null) return null;
+            return new Diffusion()
+            {
+                Id_Diffusion = (int)record["Id_Diffusion"],
+                DiffusionDate = (DateTime)record["DiffusionDate"],
+                DiffusionTime = (DateTime)record["DiffusionTime"],
+                AudioLang = (string)record["AudioLang"],
+                SubTitleLang = (record["SubTitleLang"] is DBNull) ? null : (string?)record["SubTitleLang"],
+                Id_CinemaRoom = (int)record["CinemaRoom"],
+                Id_Movie = (int)record["Id_Movie"]
+            };
+        }
     }
 }
