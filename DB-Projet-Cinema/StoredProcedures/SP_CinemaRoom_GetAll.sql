@@ -7,4 +7,5 @@ AS
 			[ScreenHeight],
 			[Can3D],
 			[Can4DX]
+			[Id_CinemaPlace]
 		FROM [CinemaRoom]
