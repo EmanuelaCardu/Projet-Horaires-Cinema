@@ -118,5 +118,7 @@ namespace ASP_Projet_Cinema.Controllers
                 return View(model);
             }
         }
+
+
     }
 }
