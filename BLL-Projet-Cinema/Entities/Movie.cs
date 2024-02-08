@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace BLL_Projet_Cinema.Entities
@@ -26,6 +27,9 @@ namespace BLL_Projet_Cinema.Entities
             PosterUrl = posterUrl;
             Duration = duration;
         }
+
+    //    CONSTRAINT[CK_Movie_ReleaseYear] CHECK([ReleaseYear] BETWEEN 1800 AND YEAR(GETDATE())),
+    //CONSTRAINT[CK_Movie_Duration] CHECK([Duration] > 0), 
 
         //public void UpdateSynopsis (string newSynopsis)
         //{

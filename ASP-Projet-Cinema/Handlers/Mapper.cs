@@ -91,6 +91,19 @@ namespace ASP_Projet_Cinema.Handlers
                 );
         }
 
+
+        public static Diffusion ToBLL( this DiffusionCreateForm entity)
+        {
+            if (entity is null) return null;
+            return new Diffusion(
+                0,
+                entity.DiffusionDate,
+                entity.DiffusionTime,
+                entity.AudioLang,
+                entity.SubTitleLang = "",
+                0,
+                0);
+        }
         public static MovieDetailsViewModel ToDetails (this Movie entity)
         {
             if (entity is null) return null;
