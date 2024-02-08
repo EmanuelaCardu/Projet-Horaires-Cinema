@@ -104,7 +104,9 @@ namespace ASP_Projet_Cinema.Handlers
                 0,
                 0);
         }
-        public static MovieDetailsViewModel ToDetails (this Movie entity)
+
+       
+        public static MovieDetailsViewModel ToDetails(this Movie entity)
         {
             if (entity is null) return null;
             return new MovieDetailsViewModel()

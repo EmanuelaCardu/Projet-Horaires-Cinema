@@ -80,6 +80,19 @@ namespace BLL_Projet_Cinema.Mappers
                 );
         }
 
+        public static BLL.CinemaRoom ToBLL(this DAL.CinemaRoom entity)
+        {
+            if (entity is null) return null;
+            return new BLL.CinemaRoom(
+                entity.Id_CinemaRoom,
+                entity.SeatsCount,
+                entity.ScreenWidth,
+                entity.ScreenHeight,
+                entity.Can3D,
+                entity.Can4DX,
+                entity.Id_CinemaPlace);
+        }
+
         public static DAL.Diffusion ToDAL (this BLL.Diffusion entity)
         {
             if (entity is null) return null;
@@ -92,6 +105,21 @@ namespace BLL_Projet_Cinema.Mappers
                 SubTitleLang = entity.SubTitleLang,
                 Id_CinemaRoom = entity.Id_CinemaRoom,
                 Id_Movie = entity.Id_Movie
+            };
+        }
+
+        public static DAL.CinemaRoom ToDAL (this BLL.CinemaRoom entity)
+        {
+            if (entity is null) return null;
+            return new DAL.CinemaRoom()
+            {
+                Id_CinemaRoom = entity.Id_CinemaRoom,
+                SeatsCount = entity.SeatsCount,
+                ScreenWidth = entity.ScreenWidth,
+                ScreenHeight = entity.ScreenHeight,
+                Can3D = entity.Can3D,
+                Can4DX = entity.Can4DX,
+                Id_CinemaPlace = entity.Id_CinemaPlace,
             };
         }
     }

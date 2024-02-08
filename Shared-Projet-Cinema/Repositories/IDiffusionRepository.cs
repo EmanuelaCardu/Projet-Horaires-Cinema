@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Shared_Projet_Cinema.Repositories
 {
-    public interface IDiffusionRepository<Entity>: ICRUDRepository<Entity, int> where Entity : class
+    public interface IDiffusionRepository<TEntity>: ICRUDRepository<TEntity, int> where TEntity : class
     {
-        public IEnumerable<Entity> GetByCinemaPlace(int id);
+        public IEnumerable<TEntity> GetByCinemaPlace(int id);
     }
 }
