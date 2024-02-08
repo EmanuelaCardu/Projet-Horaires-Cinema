@@ -19,8 +19,7 @@ namespace ASP_Projet_Cinema.Controllers
         public ActionResult Index()
         {
             IEnumerable<DiffusionListItemViewModel> model = _diffusionRepository.Get()
-                                                              .Select(d => d.ToListItem());
-            return View(model);
+                                                                        .Select(d => d.ToListItem());
         }
 
         // GET: DiffusionController/Details/5
