@@ -39,11 +39,14 @@ namespace ASP_Projet_Cinema.Controllers
         // POST: DiffusionController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(DiffusionCreateForm form)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (form == null) ModelState.AddModelError(nameof(form), "Pas de données reçues");
+                if (!ModelState.IsValid) throw new Exception();
+                int id = _diffusionRepository.Insert(form.ToBLL());
+                return RedirectToAction(nameof(Details), new { id });
             }
             catch
             {

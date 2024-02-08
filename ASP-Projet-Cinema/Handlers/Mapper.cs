@@ -145,7 +145,7 @@ namespace ASP_Projet_Cinema.Handlers
         {
             if (entity is null) return null;
             return new Movie(
-                0,
+                entity.Id_Movie,
                 entity.Title,
                 entity.SubTitle,
                 entity.ReleaseYear,
