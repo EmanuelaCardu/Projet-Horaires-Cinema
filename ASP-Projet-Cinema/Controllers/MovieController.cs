@@ -66,7 +66,7 @@ namespace ASP_Projet_Cinema.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Index));
             }
         }
 
@@ -80,7 +80,6 @@ namespace ASP_Projet_Cinema.Controllers
                 if (form is null) ModelState.AddModelError(nameof(form), "Pas de données reçues");
                 if (!ModelState.IsValid) throw new Exception();
                _movieRepository.Update(form.ToBLL());
-
                 return RedirectToAction(nameof(Details), new { id });
             }
             catch

@@ -46,7 +46,7 @@ namespace DAL_Projet_Cinema.Mappers
                 DiffusionTime = (TimeSpan)record["DiffusionTime"],
                 AudioLang = (string)record["AudioLang"],
                 SubTitleLang = (record["SubTitleLang"] is DBNull) ? null : (string?)record["SubTitleLang"],
-                Id_CinemaRoom = (int)record["CinemaRoom"],
+                Id_CinemaRoom = (int)record["Id_CinemaRoom"],
                 Id_Movie = (int)record["Id_Movie"]
             };
         }

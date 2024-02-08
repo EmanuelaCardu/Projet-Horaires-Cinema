@@ -12,9 +12,9 @@ namespace ASP_Projet_Cinema.Models
 
         public DateTime DiffusionDate { get; set; }
         [DisplayName("Heure de diffusion")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Time)]
 
-        public DateTime DiffusionTime { get; set; }
+        public TimeSpan DiffusionTime { get; set; }
         [DisplayName("Langue")]
 
         public string AudioLang { get; set; }

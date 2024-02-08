@@ -8,7 +8,6 @@ namespace ASP_Projet_Cinema.Models
     {
         [HiddenInput]
         [Required]
-        [ScaffoldColumn(false)]
         public int Id_Movie { get; set; }
         [DisplayName("Titre")]
         [Required(ErrorMessage = "Le titre est obligatoire.")]
