@@ -10,9 +10,11 @@ namespace ASP_Projet_Cinema.Controllers
     public class CinemaPlaceController : Controller
     {
         private readonly ICinemaPlaceRepository<CinemaPlace> _CinemaPlaceRepository;
-        public CinemaPlaceController(ICinemaPlaceRepository<CinemaPlace> CinemaPlaceRepository)
+        private readonly IDiffusionRepository<Diffusion> _DiffusionRepository;
+        public CinemaPlaceController(ICinemaPlaceRepository<CinemaPlace> CinemaPlaceRepository, IDiffusionRepository<Diffusion> DiffusionRepository)
         {
             _CinemaPlaceRepository = CinemaPlaceRepository;
+            _DiffusionRepository = DiffusionRepository;
         }
         // GET: CinemaPlaceController
         public ActionResult Index()
@@ -25,6 +27,7 @@ namespace ASP_Projet_Cinema.Controllers
         public ActionResult Details(int id)
         {
             CinemaPlaceDetailsViewModel model = _CinemaPlaceRepository.Get(id).ToDetails();
+            model.Diffusions = _DiffusionRepository.GetByCinemaPlace(id).Select(d =>d.ToListItem());
             return View(model); 
         }
 

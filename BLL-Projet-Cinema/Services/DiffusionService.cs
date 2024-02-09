@@ -36,7 +36,7 @@ namespace BLL_Projet_Cinema.Services
 
         public IEnumerable<Diffusion> GetByCinemaPlace(int id)
         {
-            throw new NotImplementedException();
+            return _diffusionRepository.GetByCinemaPlace(id).Select(d=> d.ToBLL());
         }
 
         public int Insert(Diffusion data)
