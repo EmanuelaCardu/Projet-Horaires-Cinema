@@ -60,7 +60,8 @@ namespace ASP_Projet_Cinema.Handlers
                 Name = entity.Name,
                 City = entity.City,
                 Street = entity.Street,
-                Number = entity.Number
+                Number = entity.Number,
+                Diffusions = entity.Diffusions.Select(d => d.ToListItem())
 
             };
         }

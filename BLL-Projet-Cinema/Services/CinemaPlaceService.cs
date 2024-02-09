@@ -11,36 +11,38 @@ namespace BLL_Projet_Cinema.Services
 {
     public class CinemaPlaceService : ICinemaPlaceRepository<CinemaPlace>
     {
-        private readonly ICinemaPlaceRepository<DAL.CinemaPlace> _repository;
-        public CinemaPlaceService(ICinemaPlaceRepository<DAL.CinemaPlace> repository)
+        private readonly ICinemaPlaceRepository<DAL.CinemaPlace> _CinemaPlaceRepository;
+        private readonly IDiffusionRepository<DAL.Diffusion> _DiffusionRepository;
+        public CinemaPlaceService(ICinemaPlaceRepository<DAL.CinemaPlace> CinemaPlaceRepository, IDiffusionRepository<DAL.Diffusion> DiffusionRepository)
         {
-            _repository = repository;   
+            _CinemaPlaceRepository = CinemaPlaceRepository;   
+            _DiffusionRepository = DiffusionRepository;
         }
 
         public void Delete(int id)
         {
-            _repository.Delete(id);
+            _CinemaPlaceRepository.Delete(id);
         }
 
         public IEnumerable<CinemaPlace> Get()
         {
-            return _repository.Get().Select(d => d.ToBLL());
+            return _CinemaPlaceRepository.Get().Select(d => d.ToBLL());
         }
 
         public CinemaPlace Get(int id)
         {
-            return _repository.Get(id).ToBLL();
+            return _CinemaPlaceRepository.Get(id).ToBLL();
 
         }
 
         public int Insert(CinemaPlace data)
         {
-            return _repository.Insert(data.ToDAL());
+            return _CinemaPlaceRepository.Insert(data.ToDAL());
         }
 
         public void Update(CinemaPlace data)
         {
-            _repository.Update(data.ToDAL());
+            _CinemaPlaceRepository.Update(data.ToDAL());
         }
     }
 }

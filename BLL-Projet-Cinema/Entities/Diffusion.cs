@@ -14,6 +14,7 @@ namespace BLL_Projet_Cinema.Entities
         public string SubTitleLang { get; set; }
         public int Id_CinemaRoom { get; set; }
         public int Id_Movie { get; set; }
+      
 
         public Diffusion(int id_Diffusion, DateTime diffusionDate, TimeSpan diffusionTime, 
             string audioLang, string subTitleLang, int id_CinemaRoom, int id_Movie)

@@ -15,5 +15,8 @@ namespace ASP_Projet_Cinema.Models
         public string Street { get; set; }
         [DisplayName("Numéro")]
         public string Number { get; set; }
+
+        public IEnumerable<DiffusionListItemViewModel> Diffusions { get; set; }
+
     }
 }
