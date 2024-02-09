@@ -122,7 +122,8 @@ namespace DAL_Projet_Cinema.Services
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "SP_Diffusion_GetByCinemaPlace";
-                    command.Parameters.AddWithValue("Id_CinemaPlace", id);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("id_cinemaPlace", id);
 
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())

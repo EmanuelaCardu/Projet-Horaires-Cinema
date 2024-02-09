@@ -40,3 +40,6 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id_CinemaPlace }) |
     <a asp-action="Index">Back to List</a>
 </div>
+<hr/>
+<h2> Liste des Diffusions</h2>
+@Html.Partial("_DiffusionListPartialView", Model.Diffusions)
