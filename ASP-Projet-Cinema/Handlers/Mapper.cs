@@ -10,7 +10,7 @@ namespace ASP_Projet_Cinema.Handlers
     {
         public static MovieListItemViewModel ToListItem(this Movie entity)
         {
-            if (entity == null) return null;
+            if (entity is null) return null;
             return new MovieListItemViewModel()
             {
                 Id_Movie = entity.Id_Movie,

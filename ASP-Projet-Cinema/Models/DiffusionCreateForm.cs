@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
+using BLL_Projet_Cinema.Entities;
 
 namespace ASP_Projet_Cinema.Models
 {
@@ -30,5 +31,8 @@ namespace ASP_Projet_Cinema.Models
         [HiddenInput]
         //[Required]
         public int Id_Movie { get; set; }
+
+        [DisplayName ("Liste de films")]
+       public IEnumerable<MovieListItemViewModel>? Movies { get; set; }
     }
 }

@@ -4,15 +4,18 @@ using BLL_Projet_Cinema.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared_Projet_Cinema.Repositories;
+using System.Reflection;
 
 namespace ASP_Projet_Cinema.Controllers
 {
     public class DiffusionController : Controller
     {
         private readonly IDiffusionRepository<Diffusion> _diffusionRepository;
-        public DiffusionController(IDiffusionRepository<Diffusion> diffusionRepository)
+        private readonly IMovieRepository<Movie> _movieRepository;
+        public DiffusionController(IDiffusionRepository<Diffusion> diffusionRepository, IMovieRepository<Movie> movieRepository)
         {
             _diffusionRepository = diffusionRepository;
+            _movieRepository = movieRepository;
         }
 
         // GET: DiffusionController
@@ -33,7 +36,9 @@ namespace ASP_Projet_Cinema.Controllers
         // GET: DiffusionController/Create
         public ActionResult Create()
         {
-            return View();
+            //DiffusionCreateForm model = new DiffusionCreateForm();
+            //model.Movies = _movieRepository.Get().Select(d => d.ToListItem());
+            return View(/*model*/);
         }
 
         // POST: DiffusionController/Create
@@ -50,6 +55,9 @@ namespace ASP_Projet_Cinema.Controllers
             }
             catch
             {
+                form ??= new DiffusionCreateForm();
+                form.Movies = _movieRepository.Get().Select(d => d.ToListItem());
+
                 return View();
             }
         }

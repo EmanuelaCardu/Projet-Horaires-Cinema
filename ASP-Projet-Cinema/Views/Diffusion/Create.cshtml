@@ -1,4 +1,6 @@
-﻿@model ASP_Projet_Cinema.Models.DiffusionCreateForm
+﻿
+@model ASP_Projet_Cinema.Models.DiffusionCreateForm
+@inject IMovieRepository<Movie> movieRepository
 
 @{
     ViewData["Title"] = "Create";
@@ -39,8 +41,21 @@
             </div>
             <div class="form-group">
                 <label asp-for="Id_Movie" class="control-label"></label>
-                <input asp-for="Id_Movie" class="form-control" />
+               @*  <label asp-for="Movies" class="control-label"></label> *@
+           @*      <input asp-for="Id_Movie" class="form-control" /> *@
+             @*    <select asp-for="Id_Movie" class="form-select">
+                    <option disabled selected style="display:none;"> Veuillez choisir un film</option>
+                    @foreach (MovieListItemViewModel movie in Model.Movies)
+                    {
+                        <option value="@movie.Id_Movie"> @movie.Title</option>
+                    }
+                </select> *@
+
                 <span asp-validation-for="Id_Movie" class="text-danger"></span>
+                @foreach (var movie in movieRepository.Get().Select(d => new { d.Id_Movie, d.Title }))
+                {
+                    <p>@movie.Title</p>
+                }
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
