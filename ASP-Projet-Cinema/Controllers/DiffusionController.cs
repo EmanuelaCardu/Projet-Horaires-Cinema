@@ -38,7 +38,7 @@ namespace ASP_Projet_Cinema.Controllers
         {
             //DiffusionCreateForm model = new DiffusionCreateForm();
             //model.Movies = _movieRepository.Get().Select(d => d.ToListItem());
-            return View(/*model*/);
+           return View(/*model*/);
         }
 
         // POST: DiffusionController/Create
@@ -48,15 +48,19 @@ namespace ASP_Projet_Cinema.Controllers
         {
             try
             {
-                if (form == null) ModelState.AddModelError(nameof(form), "Pas de données reçues");
-                if (!ModelState.IsValid) throw new Exception();
+                if (form is null) ModelState.AddModelError(nameof(form), "Pas de données reçues");
+                if (!ModelState.IsValid)
+                {
+                    throw new Exception();
+                }
+
                 int id = _diffusionRepository.Insert(form.ToBLL());
                 return RedirectToAction(nameof(Details), new { id });
             }
             catch
             {
-                form ??= new DiffusionCreateForm();
-                form.Movies = _movieRepository.Get().Select(d => d.ToListItem());
+                //form ??= new DiffusionCreateForm();
+                //form.Movies = _movieRepository.Get().Select(d => d.ToListItem());
 
                 return View();
             }

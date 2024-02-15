@@ -86,6 +86,7 @@ namespace BLL_Projet_Cinema.Mappers
             return new BLL.CinemaRoom(
                 entity.Id_CinemaRoom,
                 entity.SeatsCount,
+                entity.Number,
                 entity.ScreenWidth,
                 entity.ScreenHeight,
                 entity.Can3D,
@@ -115,6 +116,7 @@ namespace BLL_Projet_Cinema.Mappers
             {
                 Id_CinemaRoom = entity.Id_CinemaRoom,
                 SeatsCount = entity.SeatsCount,
+                Number = entity.Number,
                 ScreenWidth = entity.ScreenWidth,
                 ScreenHeight = entity.ScreenHeight,
                 Can3D = entity.Can3D,

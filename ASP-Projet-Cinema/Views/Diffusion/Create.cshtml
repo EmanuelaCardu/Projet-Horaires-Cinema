@@ -41,6 +41,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Id_Movie" class="control-label"></label>
+                @Html.DropDownListFor(m=> m.Id_Movie, movieRepository.Get()
+                                        .Select(d=> new SelectListItem(){Text= d.Title, Value= d.Id_Movie.ToString()}),
+                                "veuillez choisir un film",
+                                new {@class ="form-select"}
+                )
                @*  <label asp-for="Movies" class="control-label"></label> *@
            @*      <input asp-for="Id_Movie" class="form-control" /> *@
              @*    <select asp-for="Id_Movie" class="form-select">
@@ -52,10 +57,10 @@
                 </select> *@
 
                 <span asp-validation-for="Id_Movie" class="text-danger"></span>
-                @foreach (var movie in movieRepository.Get().Select(d => new { d.Id_Movie, d.Title }))
+              @*   @foreach (var movie in movieRepository.Get().Select(d => new { d.Id_Movie, d.Title }))
                 {
                     <p>@movie.Title</p>
-                }
+                } *@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

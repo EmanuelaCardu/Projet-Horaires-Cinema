@@ -25,8 +25,10 @@ namespace ASP_Projet_Cinema.Models
         [DisplayName("Sous titre")]
       
         public string? SubTitleLang { get; set; }
-        [HiddenInput]
+        //[HiddenInput]
         //[Required]
+        [ScaffoldColumn(false)]
+
         public int Id_CinemaRoom { get; set; }
         [HiddenInput]
         //[Required]
