@@ -81,6 +81,7 @@ namespace DAL_Projet_Cinema.Services
                     command.CommandText = "SP_CinemaRoom_Insert";
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("SeatsCount", data.SeatsCount);
+                    command.Parameters.AddWithValue("Number", data.Number);
                     command.Parameters.AddWithValue("ScreenWidth", data.ScreenWidth);
                     command.Parameters.AddWithValue("ScreenHeight", data.ScreenHeight);
                     command.Parameters.AddWithValue("Can3D", data.Can3D);
@@ -118,5 +119,27 @@ namespace DAL_Projet_Cinema.Services
 
             }
         }
+        public IEnumerable<CinemaRoom> GetByCinemaPlace(int id)
+        {
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT DISTINCT  * FROM [CinemaRoom] WHERE [Id_CinemaPlace] = @id";
+                    command.Parameters.AddWithValue("id", id);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            yield return reader.ToCinemaRoom();
+                        }
+                    }
+                }
+            }
+
+        }
+
     }
 }

@@ -11,37 +11,46 @@ namespace BLL_Projet_Cinema.Services
 {
     public class CinemaRoomService: ICinemaRoomRepository<CinemaRoom>
     {
-        private readonly IMovieRepository<DAL.CinemaRoom> _repository;
+        private readonly ICinemaRoomRepository<DAL.CinemaRoom> _cinemaRoomRepository;
 
-        public CinemaRoomService(IMovieRepository<DAL.CinemaRoom> repository)
+
+        public CinemaRoomService(ICinemaRoomRepository<DAL.CinemaRoom> cinemaRoomRepository)
         {
-            _repository = repository;
+            _cinemaRoomRepository = cinemaRoomRepository;
         }
 
         public void Delete(int id)
         {
-            _repository.Delete(id);
+            _cinemaRoomRepository.Delete(id);
         }
 
         public IEnumerable<CinemaRoom> Get()
         {
-            return _repository.Get().Select(d => d.ToBLL());
+            return _cinemaRoomRepository.Get().Select(d => d.ToBLL());
 
         }
 
         public CinemaRoom Get(int id)
         {
-            return _repository.Get(id).ToBLL();
+            return _cinemaRoomRepository.Get(id).ToBLL();
+        }
+
+
+        public IEnumerable<CinemaRoom> GetByCinemaPlace(int id)
+        {
+
+            return _cinemaRoomRepository.GetByCinemaPlace(id).Select(d => d.ToBLL());
+
         }
 
         public int Insert(CinemaRoom data)
         {
-            return _repository.Insert(data.ToDAL());
+            return _cinemaRoomRepository.Insert(data.ToDAL());
         }
 
         public void Update(CinemaRoom data)
         {
-            _repository.Update(data.ToDAL());
+            _cinemaRoomRepository.Update(data.ToDAL());
         }
     }
 }

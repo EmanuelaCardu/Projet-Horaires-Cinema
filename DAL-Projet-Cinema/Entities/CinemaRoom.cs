@@ -14,6 +14,7 @@ namespace DAL_Projet_Cinema.Entities
         public bool Can3D { get; set; }
         public bool Can4DX { get; set; }
         public int Id_CinemaPlace { get; set; }
+        public CinemaPlace CinemaPlace { get; set; }
 
     }
 }

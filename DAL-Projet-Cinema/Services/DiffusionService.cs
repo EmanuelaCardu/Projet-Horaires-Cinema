@@ -135,8 +135,28 @@ namespace DAL_Projet_Cinema.Services
                     }
                 }
             }
+
+        }
+        public IEnumerable<Diffusion> GetByMovie(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM [Diffusion] WHERE [Id_Movie] = @id";
+                    command.Parameters.AddWithValue("id", id);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            yield return reader.ToDiffusion();
+                        }
+                    }
+                }
+            }
         }
 
 
-    }
+}
 }

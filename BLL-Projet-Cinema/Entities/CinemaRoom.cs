@@ -15,6 +15,8 @@ namespace BLL_Projet_Cinema.Entities
         public bool Can3D { get; set; }
         public bool Can4DX { get; set; }
         public int Id_CinemaPlace { get; set; }
+        public CinemaPlace CinemaPlace { get; set; }
+
 
         public CinemaRoom(int id_CinemaRoom, int seatsCount, int number, int screenWidth, int screenHeight, bool can3D, bool can4DX, int id_CinemaPlace)
         {

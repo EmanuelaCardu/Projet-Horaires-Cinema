@@ -117,12 +117,15 @@ namespace DAL_Projet_Cinema.Services
                         throw new ArgumentException(nameof(data.Id_Movie), $"L'identifiant {data.Id_Movie} n'est" +
                             $" pas dans la base de donnée");
 
-
                 }
 
             }
 
+        }
 
+        public bool Update(int id, Movie data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

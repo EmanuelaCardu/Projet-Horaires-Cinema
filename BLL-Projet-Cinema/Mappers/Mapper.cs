@@ -73,11 +73,17 @@ namespace BLL_Projet_Cinema.Mappers
                 entity.Id_Diffusion,
                 entity.DiffusionDate,
                 entity.DiffusionTime,
-                entity.AudioLang,
-                entity.SubTitleLang,
+               Enum.Parse<BLL.Languages>(entity.AudioLang),
+                toLanguageSubTitlleLang(entity.SubTitleLang),
                 entity.Id_CinemaRoom,
                 entity.Id_Movie
                 );
+        }
+        private static BLL.Languages? toLanguageSubTitlleLang(string subTitleLang)
+        {
+            if (subTitleLang is null) return null;
+
+            return Enum.Parse<BLL.Languages>(subTitleLang);
         }
 
         public static BLL.CinemaRoom ToBLL(this DAL.CinemaRoom entity)
@@ -102,8 +108,8 @@ namespace BLL_Projet_Cinema.Mappers
                 Id_Diffusion = entity.Id_Diffusion,
                 DiffusionDate = entity.DiffusionDate,
                 DiffusionTime = entity.DiffusionTime,
-                AudioLang = entity.AudioLang,
-                SubTitleLang = entity.SubTitleLang,
+                AudioLang = entity.AudioLang.ToString(),
+                SubTitleLang = entity.SubTitleLang.ToString(),
                 Id_CinemaRoom = entity.Id_CinemaRoom,
                 Id_Movie = entity.Id_Movie
             };

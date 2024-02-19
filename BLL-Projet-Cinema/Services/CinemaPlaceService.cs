@@ -11,38 +11,48 @@ namespace BLL_Projet_Cinema.Services
 {
     public class CinemaPlaceService : ICinemaPlaceRepository<CinemaPlace>
     {
-        private readonly ICinemaPlaceRepository<DAL.CinemaPlace> _CinemaPlaceRepository;
-        private readonly IDiffusionRepository<DAL.Diffusion> _DiffusionRepository;
-        public CinemaPlaceService(ICinemaPlaceRepository<DAL.CinemaPlace> CinemaPlaceRepository, IDiffusionRepository<DAL.Diffusion> DiffusionRepository)
+        private readonly ICinemaPlaceRepository<DAL.CinemaPlace> _cinemaPlaceRepository;
+        private readonly IDiffusionRepository<DAL.Diffusion> _diffusionRepository;
+        private readonly ICinemaRoomRepository<CinemaRoom> _cinemaRoomRepository;
+
+        public CinemaPlaceService(ICinemaPlaceRepository<DAL.CinemaPlace> cinemaPlaceRepository, IDiffusionRepository<Diffusion> diffusionRepository, ICinemaRoomRepository<CinemaRoom> cinemaRoomRepository)
         {
-            _CinemaPlaceRepository = CinemaPlaceRepository;   
-            _DiffusionRepository = DiffusionRepository;
+            _cinemaPlaceRepository = cinemaPlaceRepository;
+            _diffusionRepository = diffusionRepository;
+            _cinemaRoomRepository = cinemaRoomRepository;
         }
 
         public void Delete(int id)
         {
-            _CinemaPlaceRepository.Delete(id);
+            _cinemaPlaceRepository.Delete(id);
         }
 
         public IEnumerable<CinemaPlace> Get()
         {
-            return _CinemaPlaceRepository.Get().Select(d => d.ToBLL());
+            return _cinemaPlaceRepository.Get().Select(d => d.ToBLL());
         }
 
         public CinemaPlace Get(int id)
         {
-            return _CinemaPlaceRepository.Get(id).ToBLL();
+            CinemaPlace entity = _cinemaPlaceRepository.Get(id).ToBLL();
+            IEnumerable<Diffusion> diffusion = _diffusionRepository.GetByCinema(id);
+            entity.AddDiffusions(diffusion);
+            /*chercher l 'ensemble des cinemaRomms de la cinemaPlace*/
+
+            IEnumerable<CinemaRoom> cinemaRooms = _cinemaRoomRepository.GetByCinemaPlace(id);
+            entity.AddRooms(cinemaRooms);
+            return entity;
 
         }
 
         public int Insert(CinemaPlace data)
         {
-            return _CinemaPlaceRepository.Insert(data.ToDAL());
+            return _cinemaPlaceRepository.Insert(data.ToDAL());
         }
 
         public void Update(CinemaPlace data)
         {
-            _CinemaPlaceRepository.Update(data.ToDAL());
+            _cinemaPlaceRepository.Update(data.ToDAL());
         }
     }
 }
