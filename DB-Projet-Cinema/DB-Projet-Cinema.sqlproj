@@ -59,6 +59,7 @@
     <Folder Include="StoredProcedures" />
     <Folder Include="Tables" />
     <Folder Include="Scripts" />
+    <Folder Include="ScalarFunctions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoredProcedures\SP_CinemaPlace_Delete.sql" />
@@ -87,6 +88,11 @@
     <Build Include="StoredProcedures\SP_Diffusion_Insert.sql" />
     <Build Include="StoredProcedures\SP_Diffusion_Update.sql" />
     <Build Include="StoredProcedures\SP_Diffusion_GetByCinemaPlace.sql" />
+    <Build Include="StoredProcedures\SP_User_Check.sql" />
+    <Build Include="StoredProcedures\SP_User_Insert.sql" />
+    <Build Include="ScalarFunctions\SF_SaltAndHash_Password.sql" />
+    <Build Include="Tables\User.sql" />
+    <Build Include="Tables\Client.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DB-Projet-Cinema.sqlproj.user" />

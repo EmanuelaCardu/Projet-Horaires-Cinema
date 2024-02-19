@@ -7,4 +7,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Language" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="e5b0d5ab-d1fe-4bdd-8191-6da5216c91e2" ChangeDateTime="02/19/2024 07:22:19">
+    <Property Name="ElementName" Value="[dbo].[CK_User_Column]" />
+    <Property Name="ElementType" Value="SqlCheckConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[CK_User_Email]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a5c1e70b-0296-43a0-954f-662e2b2426ec" ChangeDateTime="02/19/2024 08:41:53">
+    <Property Name="ElementName" Value="[dbo].[Client].[first_name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Client]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="First_name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c722f563-b334-43fa-a318-ee801b99d2af" ChangeDateTime="02/19/2024 08:41:57">
+    <Property Name="ElementName" Value="[dbo].[Client].[last_name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Client]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Last_name" />
+  </Operation>
 </Operations>
