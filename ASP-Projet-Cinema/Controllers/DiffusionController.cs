@@ -34,12 +34,14 @@ namespace ASP_Projet_Cinema.Controllers
         }
 
         // GET: DiffusionController/Create
-        public ActionResult Create()
-        {
-            //DiffusionCreateForm model = new DiffusionCreateForm();
-            //model.Movies = _movieRepository.Get().Select(d => d.ToListItem());
-           return View(/*model*/);
-        }
+        //public ActionResult Create()
+        ////{
+        //    //DiffusionCreateForm model = new DiffusionCreateForm();
+        //    //model.Movies = _movieRepository.Get().Select(d => d.ToListItem());
+        //   return View(/*model*/);
+        //}
+
+
 
         // POST: DiffusionController/Create
         [HttpPost]

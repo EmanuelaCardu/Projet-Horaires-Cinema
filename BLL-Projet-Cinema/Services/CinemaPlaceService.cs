@@ -12,7 +12,7 @@ namespace BLL_Projet_Cinema.Services
     public class CinemaPlaceService : ICinemaPlaceRepository<CinemaPlace>
     {
         private readonly ICinemaPlaceRepository<DAL.CinemaPlace> _cinemaPlaceRepository;
-        private readonly IDiffusionRepository<DAL.Diffusion> _diffusionRepository;
+        private readonly IDiffusionRepository<Diffusion> _diffusionRepository;
         private readonly ICinemaRoomRepository<CinemaRoom> _cinemaRoomRepository;
 
         public CinemaPlaceService(ICinemaPlaceRepository<DAL.CinemaPlace> cinemaPlaceRepository, IDiffusionRepository<Diffusion> diffusionRepository, ICinemaRoomRepository<CinemaRoom> cinemaRoomRepository)
